@@ -6,10 +6,11 @@
       </TextReveal>
     </div>
     <div class="center-content" style="top:45% ">
+    
       <TextReveal :duration="700" :delay="1000">
         <div
-          style="text-align:center; margin-top:8px; line-height: 20px;"
-        >Greetings, my name is Enric Llopis. I'm a Computer Science student who develops...</div>
+          style="text-align:center; margin-top:8px; line-height: 20px; display:inline-block;"
+        >Greetings, I'm Enric Llopis and I'm a Computer Science student who develops...</div>
       </TextReveal>
       <div>
         <MyButton i="fab fa-github-alt" :onClick="openGitHub">Github</MyButton>
