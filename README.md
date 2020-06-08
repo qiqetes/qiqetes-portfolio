@@ -1,19 +1,15 @@
-# qiqete-portfolio-vue
+# My web portfolio
 
-## Project setup
-```
-npm install
-```
+Simple vue project that I'm working on to show my Github repositories. 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Developed with:
+
+I used the vue-cli to set up the project and programmed the site from there.
+
+
+
+### Use:
+
+Right now it is still a work in progress and I don't recommend cloning it for personal use
