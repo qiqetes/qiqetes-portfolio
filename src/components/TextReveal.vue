@@ -53,6 +53,7 @@ export default {
 .show {
   opacity: 0;
   transition: opacity 0.3s;
+  display: inline-block;
 }
 .text-line {
   word-wrap: break-word;
@@ -61,12 +62,13 @@ export default {
   position: relative;
   display: inline-block;
   overflow: hidden;
-  width: 100%;
+  width: auto;
   height: auto;
 }
 .cover-text {
   position: absolute;
   background-color: #2c3e50;
+  display: inline-block;
   height: 100%;
   width: 100%;
   transform: translateX(102%);
