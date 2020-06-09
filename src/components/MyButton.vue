@@ -1,11 +1,11 @@
 <template>
-  <div style="display: inline-block;">
+  <div style="display: inline-block;" class="butt-container">
     <button v-on:click="onClick()">
       <div style="display: inline-block;">
         <div>
           <h2>
             <slot></slot>
-            <i :class="i"></i>
+            <i :class="i" v-if="i"></i>
           </h2>
         </div>
       </div>
@@ -48,6 +48,9 @@ button {
   @include box-shadow(2);
   color: #2c3e50;
   transition: box-shadow 0.5s;
+  //   transform: translateY(-140%);
+  //   animation: btn-reveal 1s;
+  //   animation-delay: 2s;
 }
 button:focus {
   outline: 1px solid transparent;
@@ -65,5 +68,15 @@ i {
 }
 h2 {
   margin: 10px 15px 10px 15px;
+}
+
+@keyframes btn-reveal {
+  0% {
+    transform: translateY(-140%);
+    @include box-shadow(2);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
 </style>

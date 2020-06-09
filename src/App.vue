@@ -1,37 +1,61 @@
 <template>
   <div id="app">
-    <div class="logo">
-      <TextReveal :duration="1000">
-        <h1>qiqetes.</h1>
-      </TextReveal>
-    </div>
-    <div class="center-content" style="top:45% ">
-    
-      <TextReveal :duration="700" :delay="1000">
-        <div
-          style="text-align:center; margin-top:8px; line-height: 20px; display:inline-block;"
-        >Greetings, I'm Enric Llopis and I'm a Computer Science student who develops...</div>
-      </TextReveal>
-      <div>
-        <MyButton i="fab fa-github-alt" :onClick="openGitHub">Github</MyButton>
-        <MyButton :onClick="goToWorkSection">Work</MyButton>
+    <div class="container my-cont">
+      <div class="row justify-content-center align-items-end logo-cont">
+        <TextReveal :duration="1000">
+          <h1>qiqetes.</h1>
+        </TextReveal>
+      </div>
+      <div class="row justify-content-center">
+        <TextReveal :duration="700" :delay="1000">
+          <h5
+            style="text-align:center; line-height: 30px; display:inline-block;"
+          >Greetings, I'm Enric Llopis and I'm a Computer Science student who develops...</h5>
+        </TextReveal>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-6">
+          <div class="row justify-content-center">
+            <div class="col-md-auto">
+              <div class="row justify-content-center">
+                <MyButton i="fab fa-github-alt" :onClick="openGitHub">Github</MyButton>
+              </div>
+            </div>
+            <div class="col-md-auto">
+              <div class="row justify-content-center">
+                <MyButton :onClick="goToWorkSection">Work</MyButton>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="particles">
+    <!-- TODO: change it to a different component -->
+    <div class="particles" :style="{top: parallaxOffset+'px'}">
       <div id="particles-js"></div>
     </div>
   </div>
 </template>
+
 <script>
 import "./assets/particles.min.js";
 import TextReveal from "./components/TextReveal";
 import MyButton from "./components/MyButton.vue";
 
 export default {
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+
   mounted() {
     window.scrollTo(0, 0);
     this.initParticles();
+  },
+  data() {
+    return {
+      parallaxOffset: 0
+    };
   },
   methods: {
     initParticles() {
@@ -102,13 +126,17 @@ export default {
         retina_detect: true
       });
     },
+
+    handleScroll() {
+      let t = window.scrollY;
+      this._data.parallaxOffset = t * 0.5;
+    },
     openGitHub() {
       window.open("https://github.com/qiqetes");
     },
     goToWorkSection() {
       let y = document.getElementById("app").scrollHeight;
-      console.log(y);
-      window.scroll(0, y);
+      window.scroll({ left: 0, top: y, behavior: "smooth" });
     }
   },
   components: {
@@ -121,6 +149,16 @@ export default {
 #app {
   h1 {
     font-family: "Space Mono", monospace;
+    font-size: 3.2em;
+    padding: 0;
+    margin: 0;
+  }
+  h2 {
+    font-family: "Questrial", sans-serif;
+    font-size: 1.8em;
+  }
+  h5 {
+    margin-top: 30px;
   }
   font-family: "Questrial", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -151,25 +189,13 @@ body {
   // }
 }
 
-.center-content {
-  position: absolute;
-  min-width: 80%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  text-align: center;
+.my-cont {
+  height: 100%;
+}
+.logo-cont {
+  height: 40%;
 }
 
-.logo {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  h1 {
-    font-size: 3em;
-    padding: 0;
-    margin: 0;
-  }
-}
 .particles {
   position: absolute;
   z-index: -20;
