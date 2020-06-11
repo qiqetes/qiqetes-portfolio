@@ -1,0 +1,50 @@
+{
+    "works": [
+        {
+            "name": "this portfolio",
+            "date": "2020",
+            "description": "This is a web portfolio created with vue",
+            "tags": [
+                "vue",
+                "front-end",
+                "ui"
+            ]
+        },
+        {
+            "name": "My perillin Noise",
+            "date": "2020",
+            "description": "My approach to create pseudo random noise written in c# with threading optimizations",
+            "tags": [
+                "c#",
+                "algorithms"
+            ]
+        },
+        {
+            "name": "Markov Chain Twitter",
+            "date": "2020",
+            "description": "With machine learning it learns from user tweets and publish random tweets with the leanguage learnt",
+            "tags": [
+                "machine learning",
+                "python",
+                "algorithms"
+            ]
+        },
+        {
+            "name": "Cards Against Humanity",
+            "date": "2019-2020",
+            "description": "Multiplayer card game developed with flutter for android and ios",
+            "tags": [
+                "flutter",
+                "dart",
+                "front-end",
+                "ui"
+            ]
+        }
+    ],
+    "tags": [
+        "vue",
+        "json",
+        "git",
+        "ui"
+    ]
+}
