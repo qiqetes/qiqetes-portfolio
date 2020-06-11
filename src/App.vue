@@ -152,7 +152,7 @@ body {
   font-family: "Questrial", sans-serif;
   margin: 0px;
   padding: 0px;
-  height: 10000px;
+  height: 3000px;
   display: block;
   overflow: hidden;
   overflow-y: auto;
@@ -214,6 +214,11 @@ button:hover {
 
 button:active {
   transform: scale(0.99);
+}
+button:disabled {
+  box-shadow: none;
+  border: 2px solid #2c3e50;
+  border-radius: 25px;
 }
 i {
   margin-left: 10px;

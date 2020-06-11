@@ -18,7 +18,8 @@
             "tags": [
                 "c#",
                 "algorithms"
-            ]
+            ],
+            "link": "http://github.com/qiqetes/qiqetes-portfolio"
         },
         {
             "name": "Markov Chain Twitter",
@@ -28,7 +29,8 @@
                 "machine learning",
                 "python",
                 "algorithms"
-            ]
+            ],
+            "link": "http://github.com/qiqetes/qiqetes-portfolio"
         },
         {
             "name": "Cards Against Humanity",
@@ -39,7 +41,8 @@
                 "dart",
                 "front-end",
                 "ui"
-            ]
+            ],
+            "link": ""
         },
         {
             "name": "Todo-list app",
@@ -48,7 +51,8 @@
             "tags": [
                 "react",
                 "front-end"
-            ]
+            ],
+            "link": "http://github.com/qiqetes/qiqetes-portfolio"
         }
     ]
 }

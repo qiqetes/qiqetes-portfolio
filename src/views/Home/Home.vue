@@ -23,7 +23,7 @@
           <div class="row justify-content-center">
             <div class="col-md-auto">
               <div class="row justify-content-center">
-                <Button :onClick="openGitHub">
+                <Button v-on:click="openGitHub">
                   <h2>
                     Github
                     <i class="fab fa-github-alt"></i>
@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-auto">
               <div class="row justify-content-center">
-                <button :onClick="goToWorkSection">
+                <button v-on:click="goToWorkSection">
                   <h2>Work</h2>
                 </button>
               </div>
@@ -106,7 +106,6 @@ export default {
   },
   components: {
     TextReveal,
-
     MyNav
   }
 };

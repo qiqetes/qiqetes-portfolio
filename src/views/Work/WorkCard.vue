@@ -3,17 +3,21 @@
     <h4>{{work.name}}</h4>
     <p>{{work.description}}</p>
     <div class="row" style="margin: auto">
-      <div class="col-sm-6 col-lg-8" style="padding: 0">
+      <div class="col-6 col-lg-8" style="padding: 0">
         <ul style="margin: 12px">
           <li v-for="tag in work.tags" :key="work.name+tag" class="tag">{{tag}}</li>
         </ul>
       </div>
-      <div class="col-sm-6 col-lg-4 align-self-end" style="padding: 0">
+      <div class="col-6 col-lg-4 align-self-end" style="padding: 0">
         <div class="row justify-content-end">
-          <Button style="padding: 4px 12px 4px 12px">
+          <button v-if="work.link">
             source
             <i class="fas fa-code"></i>
-          </Button>
+          </button>
+          <button v-if="!work.link" disabled>
+            no source
+            <i class="fas fa-code"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -59,6 +63,7 @@ export default {
   background-color: rgb(53, 53, 53);
 }
 button {
+  padding: 4px 12px 4px 12px;
   i {
     margin-left: 0;
   }
