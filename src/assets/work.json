@@ -1,14 +1,15 @@
 {
     "works": [
         {
-            "name": "this portfolio",
+            "name": "This portfolio",
             "date": "2020",
             "description": "This is a web portfolio created with vue",
             "tags": [
                 "vue",
                 "front-end",
                 "ui"
-            ]
+            ],
+            "link": "http://github.com/qiqetes/qiqetes-portfolio"
         },
         {
             "name": "My perillin Noise",
@@ -39,12 +40,15 @@
                 "front-end",
                 "ui"
             ]
+        },
+        {
+            "name": "Todo-list app",
+            "description": "The typical todo application developed in react",
+            "date": "2018",
+            "tags": [
+                "react",
+                "front-end"
+            ]
         }
-    ],
-    "tags": [
-        "vue",
-        "json",
-        "git",
-        "ui"
     ]
 }

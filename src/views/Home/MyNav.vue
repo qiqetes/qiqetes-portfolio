@@ -1,7 +1,7 @@
 <template>
   <nav :class="{solid: solid}">
     <ul class="nav justify-content-end">
-      <li class="nav-item">About me</li>
+      <li class="nav-item">Resume</li>
       <li class="nav-item">About me</li>
       <li class="nav-item">About me</li>
     </ul>

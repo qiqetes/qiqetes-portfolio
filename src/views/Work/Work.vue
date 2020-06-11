@@ -1,11 +1,12 @@
 <template>
-  <ul class="container">
-    <div class="row justify-content-center">
-      <li v-for="work in works" :key="work.name" class="col-5">
+  <div class="work container">
+    <h1>Some of my projects:</h1>
+    <ul class="card-columns">
+      <li v-for="work in works" :key="work.name" class="card">
         <WorkCard :work="work" />
       </li>
-    </div>
-  </ul>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -27,5 +28,28 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+h1 {
+  margin-top: 50px;
+}
+ul {
+  margin-top: 40px;
+}
+.card-columns {
+  column-count: 1;
+}
+
+.card {
+  border: none;
+}
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+@media (min-width: 1920px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
 </style>

@@ -23,12 +23,19 @@
           <div class="row justify-content-center">
             <div class="col-md-auto">
               <div class="row justify-content-center">
-                <MyButton i="fab fa-github-alt" :onClick="openGitHub">Github</MyButton>
+                <Button :onClick="openGitHub">
+                  <h2>
+                    Github
+                    <i class="fab fa-github-alt"></i>
+                  </h2>
+                </Button>
               </div>
             </div>
             <div class="col-md-auto">
               <div class="row justify-content-center">
-                <MyButton :onClick="goToWorkSection">Work</MyButton>
+                <button :onClick="goToWorkSection">
+                  <h2>Work</h2>
+                </button>
               </div>
             </div>
           </div>
@@ -40,7 +47,7 @@
 
 <script>
 import TextReveal from "../../components/TextReveal";
-import MyButton from "../../components/MyButton.vue";
+
 import MyNav from "./MyNav";
 
 export default {
@@ -99,7 +106,7 @@ export default {
   },
   components: {
     TextReveal,
-    MyButton,
+
     MyNav
   }
 };

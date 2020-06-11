@@ -104,6 +104,20 @@ export default {
 
 
 <style lang="scss">
+@mixin box-shadow($level) {
+  @if $level == 1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  } @else if $level == 2 {
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+  } @else if $level == 3 {
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.3);
+  } @else if $level == 4 {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 40px rgba(0, 0, 0, 0.1);
+  } @else if $level == 5 {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  }
+}
+
 html {
   h1 {
     font-family: "Space Mono", monospace;
@@ -143,9 +157,10 @@ body {
   overflow: hidden;
   overflow-y: auto;
   color: #2c3e50;
-
+  background-color: rgb(253, 253, 253);
   ul {
     list-style: none;
+    padding-left: 0;
   }
 }
 body::-webkit-scrollbar {
@@ -169,6 +184,48 @@ body::-webkit-scrollbar-thumb {
   #particles-js {
     width: 100%;
     height: 100%;
+  }
+}
+
+button {
+  margin: 12px;
+  padding: 15px 25px 15px 25px;
+  font-family: "Space Mono";
+  background-color: white;
+  border: 0;
+  border-radius: 100px;
+
+  @include box-shadow(2);
+  color: #2c3e50;
+  transition: box-shadow 0.5s;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+button:focus {
+  outline: 1px solid transparent;
+  outline-offset: -4px;
+}
+button:hover {
+  @include box-shadow(3);
+}
+
+button:active {
+  transform: scale(0.99);
+}
+i {
+  margin-left: 10px;
+}
+
+@keyframes btn-reveal {
+  0% {
+    transform: translateY(-140%);
+    @include box-shadow(2);
+  }
+  100% {
+    transform: translateY(0%);
   }
 }
 </style>
