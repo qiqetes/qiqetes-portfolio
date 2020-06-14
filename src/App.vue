@@ -2,7 +2,20 @@
   <div id="app">
     <Home />
     <Work />
+    <Skills />
+    <!-- scroll item -->
+    <transition name="fade">
+      <div class="scroll-down row justify-content-center" v-if="scrollVisible">
+        <div>
+          <div class="row justify-content-center">scroll</div>
+          <div class="row justify-content-center">
+            <i class="fa fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+    </transition>
 
+    <!-- particles -->
     <div class="particles" :style="{top: parallaxOffset+'px'}">
       <div id="particles-js"></div>
     </div>
@@ -11,22 +24,25 @@
 
 <script>
 import "./assets/particles.min.js";
-import Home from "./views/Home/Home.vue";
+import Home from "./views/Home/Home";
 import Work from "./views/Work/Work";
+import Skills from "./views/Skills/Skills";
 
 export default {
   mounted() {
-    window.scrollTo(0, 0);
     this.initParticles();
+    window.addEventListener("scroll", this.scrollHandler);
   },
   components: {
     Home,
-    Work
+    Work,
+    Skills
   },
   data() {
     return {
       parallaxOffset: 0,
-      changingWord: "..."
+      changingWord: "...",
+      scrollVisible: true
     };
   },
   methods: {
@@ -97,6 +113,11 @@ export default {
         },
         retina_detect: true
       });
+    },
+    scrollHandler() {
+      let y = window.scrollY;
+      if (y > 100) this.scrollVisible = false;
+      this.parallaxOffset = y * 0.5;
     }
   }
 };
@@ -120,6 +141,7 @@ export default {
 
 html {
   h1 {
+    -webkit-user-select: none;
     font-family: "Space Mono", monospace;
     font-size: 3.2em;
     padding: 0;
@@ -132,7 +154,7 @@ html {
   h5 {
     margin-top: 30px;
   }
-  font-family: "Questrial", sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -149,7 +171,7 @@ html {
 }
 
 body {
-  font-family: "Questrial", sans-serif;
+  font-family: "Space Mono", sans-serif;
   margin: 0px;
   padding: 0px;
   height: 3000px;
@@ -222,6 +244,42 @@ button:disabled {
 }
 i {
   margin-left: 10px;
+}
+
+// scroll item
+.scroll-down {
+  width: 100% !important;
+  position: absolute;
+  bottom: 20px;
+  animation: pulse 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  transition: opacity 1s;
+}
+.fade-leave-active {
+  animation: fade 1s;
+}
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-15px);
+  }
+  30% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @keyframes btn-reveal {

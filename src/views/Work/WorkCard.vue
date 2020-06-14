@@ -1,16 +1,19 @@
 <template>
-  <div class="work-card">
+  <div class="work-card" :style="{opacity: transparency}">
     <h4>{{work.name}}</h4>
     <p>{{work.description}}</p>
     <div class="row" style="margin: auto">
       <div class="col-6 col-lg-8" style="padding: 0">
-        <ul style="margin: 12px">
-          <li v-for="tag in work.tags" :key="work.name+tag" class="tag">{{tag}}</li>
-        </ul>
+        <div class="row justify-content-start">
+          <ul style="margin: 12px">
+            <li v-for="tag in work.tags" :key="work.name+tag" class="tag">{{tag}}</li>
+          </ul>
+        </div>
       </div>
       <div class="col-6 col-lg-4 align-self-end" style="padding: 0">
+        <!-- TODO: add a view live link -->
         <div class="row justify-content-end">
-          <button v-if="work.link">
+          <button v-if="work.link" v-on:click="goToLink(work.link)">
             source
             <i class="fas fa-code"></i>
           </button>
@@ -26,15 +29,35 @@
 
 <script>
 export default {
-  data() {
+  data: function() {
     return {
-      work: undefined
+      transparency: 0,
+      yIndex: 0,
+      actual: 0,
+      cT: this.changeTransparency
     };
+  },
+  created() {
+    window.addEventListener("scroll", this.changeTransparency);
+  },
+  mounted() {
+    this.yIndex = this.$el.getBoundingClientRect().top - window.innerHeight;
+    this.changeTransparency;
   },
   props: {
     work: Object
   },
-  components: {}
+  methods: {
+    goToLink(link) {
+      window.open(link);
+    },
+    changeTransparency() {
+      //  TODO: rename this method to eventHandler
+      if (window.scrollY - 50 > this.yIndex && this.transparency != 1) {
+        this.transparency = 1;
+      } // FIXME: with enter it will behave better
+    }
+  }
 };
 </script>
 
@@ -52,6 +75,8 @@ export default {
   padding: 25px;
   border-radius: 30px;
   @include box-shadow(2);
+  transition: opacity 1s;
+  margin-bottom: 15px;
 }
 
 .tag {

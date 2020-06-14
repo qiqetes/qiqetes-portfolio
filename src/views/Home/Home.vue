@@ -12,7 +12,7 @@
           <div class="row justify-content-center">
             <TextReveal :duration="700" :delay="1000">
               <h5
-                style="text-align:center; line-height: 30px; display:inline-block;"
+                style="text-align:center; line-height: 30px; font-family:'Questrial'; display:inline-block;"
               >{{greetingMsg}}{{changingWord}}</h5>
             </TextReveal>
           </div>
@@ -121,5 +121,14 @@ export default {
 }
 .logo-cont {
   height: 40%;
+}
+@media (max-width: 768px) {
+  .logo-cont {
+    height: 32%;
+  }
+}
+h2 {
+  font-family: "Space Mono";
+  font-weight: 900;
 }
 </style>

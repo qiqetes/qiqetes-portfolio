@@ -1,6 +1,6 @@
 <template>
-  <div class="work container">
-    <h1>Some of my projects:</h1>
+  <div class="container">
+    <h1 class="text-center">Some of my projects:</h1>
     <ul class="card-columns">
       <li v-for="work in works" :key="work.name" class="card">
         <WorkCard :work="work" />
@@ -47,7 +47,7 @@ ul {
     column-count: 2;
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 2400px) {
   .card-columns {
     column-count: 3;
   }
