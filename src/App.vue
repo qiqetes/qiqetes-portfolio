@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Home />
-    <Work />
-    <Skills />
+    <MyNav :solid="turnSolidNav"></MyNav>
+    <router-view></router-view>
+
     <!-- scroll item -->
-    <transition name="fade">
+    <!-- <transition name="fade">
       <div class="scroll-down row justify-content-center" v-if="scrollVisible">
         <div>
           <div class="row justify-content-center">scroll</div>
@@ -13,9 +13,9 @@
           </div>
         </div>
       </div>
-    </transition>
+    </transition>-->
 
-    <!-- Theme switch button -->
+    <!-- Theme switch button-->
     <transition name="fade">
       <div class="night-mode" v-on:click="switchTheme()" v-if="scrollVisible">
         <i class="fas fa-moon" v-if="nightMode"></i>
@@ -32,26 +32,32 @@
 
 <script>
 import "./assets/particles.min.js";
-import Home from "./views/Home/Home";
-import Work from "./views/Work/Work";
-import Skills from "./views/Skills/Skills";
+import MyNav from "./components/MyNav";
 
 export default {
+  components: {
+    MyNav
+  },
+
   mounted() {
     this.initParticles();
     window.addEventListener("scroll", this.scrollHandler);
+    this.logoY = document.getElementById("logo").getBoundingClientRect().top;
   },
-  components: {
-    Home,
-    Work,
-    Skills
+  created() {
+    const userPrefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (userPrefersDark) this.switchTheme();
   },
   data() {
     return {
       parallaxOffset: 0,
       changingWord: "...",
       scrollVisible: true,
-      nightMode: false
+      nightMode: false,
+      turnSolidNav: false,
+      logoY: 0
     };
   },
   methods: {
@@ -125,14 +131,19 @@ export default {
     },
     scrollHandler() {
       let y = window.scrollY;
-      if (y > 25) this.scrollVisible = false;
-      else this.scrollVisible = true;
+      if (y > 25) {
+        this.scrollVisible = false;
+        if (y > this.logoY) {
+          this.turnSolidNav = true;
+        } else {
+          this.turnSolidNav = false;
+        }
+      } else this.scrollVisible = true;
       this.parallaxOffset = y * 0.5;
     },
     switchTheme() {
       this.nightMode = !this.nightMode;
       let el = document.getElementsByTagName("BODY")[0];
-      console.log(el);
       if (this.nightMode == true) {
         el.setAttribute("data-theme", "dark");
       } else {
@@ -149,14 +160,18 @@ export default {
 
 body {
   --q-bg: rgb(252, 252, 252);
+  --q-scroll-bg: rgb(230, 230, 230);
   --q-sec: white;
   --primary: #2c3e50;
+  --accent: #2c3e50;
   --q-tag: rgb(53, 53, 53);
 }
 body[data-theme="dark"] {
   // TODO: fucking ugly colors
   --q-bg: #2d2a2e;
   --q-sec: #2d2a2d;
+  --q-scroll-bg: #221f22;
+  --accent: #a04f64;
   --primary: rgb(252, 252, 252);
   --q-tag: rgb(219, 219, 219);
 }
@@ -199,7 +214,7 @@ body {
   font-family: "Space Mono", sans-serif;
   margin: 0px;
   padding: 0px;
-  height: 3000px;
+
   display: block;
   overflow: hidden;
   overflow-y: auto;
@@ -214,12 +229,11 @@ body::-webkit-scrollbar {
   width: 0.5em;
 }
 body::-webkit-scrollbar-track {
-  background-color: rgb(230, 230, 230);
+  background-color: var(--q-scroll-bg);
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: var(--primary);
-  // outline: 1px solid slategrey;
+  background-color: var(--accent);
 }
 
 .particles {
@@ -237,7 +251,7 @@ body::-webkit-scrollbar-thumb {
 button {
   margin: 12px;
   padding: 15px 25px 15px 25px;
-  font-family: "Space Mono";
+  font-family: "Space Mono" !important;
   background-color: var(--q-sec);
   border: 0;
   border-radius: 100px;

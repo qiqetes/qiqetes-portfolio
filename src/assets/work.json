@@ -22,6 +22,17 @@
             "link": "http://github.com/qiqetes/qiqetes-portfolio"
         },
         {
+            "name": "Markov Chain Twitter",
+            "date": "2020",
+            "description": "With machine learning it learns from user tweets and publish random tweets with the leanguage learnt.",
+            "tags": [
+                "machine learning",
+                "python",
+                "algorithms"
+            ],
+            "link": "http://github.com/qiqetes/qiqetes-portfolio"
+        },
+        {
             "name": "Cubolores (GameJam UPV)",
             "date": "2019",
             "description": "Winner game developed in a jam of 34 hours for the Polytechnic University of Valencia. We used unity as engine and blender 3D to make the assets. A video will be available soon.",
@@ -33,20 +44,9 @@
             ]
         },
         {
-            "name": "Markov Chain Twitter",
-            "date": "2020",
-            "description": "With machine learning, it learns from user tweets and publishes random tweets with the language learnt.",
-            "tags": [
-                "machine learning",
-                "python",
-                "algorithms"
-            ],
-            "link": "http://github.com/qiqetes/qiqetes-portfolio"
-        },
-        {
             "name": "Cards Against Humanity",
             "date": "2019-2020",
-            "description": "My most ambitious project. It is a mobile multiplayer game developed for IOs and Android. It will be launched this summer.",
+            "description": "My most ambitious project. It is a mobile multiplayer game developed for IOs and android. It will be launched this summer.",
             "tags": [
                 "flutter",
                 "dart",
@@ -57,7 +57,7 @@
         {
             "name": "My electron diary",
             "date": "2018",
-            "description": "A non-finished project where I tried to make a personal diary application using Vue.js.",
+            "description": "A non-finished project, where I tried to make a personal diary application using Vue",
             "tags": [
                 "vue",
                 "electron",
@@ -68,7 +68,7 @@
         },
         {
             "name": "Todo-list app",
-            "description": "Single page application where I develop the typical to-do list.",
+            "description": "Single-page application developing the typical to-do list.",
             "date": "2018",
             "tags": [
                 "react",
