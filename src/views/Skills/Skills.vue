@@ -13,7 +13,10 @@
             <h3>{{skill.name}}</h3>
             <div class="break"></div>
             <ul>
-              <li v-for="subSkill in skill.subskills" :key="subSkill">{{subSkill}}</li>
+              <li v-for="(subSkill,i) in skill.subskills" :key="subSkill">
+                <span>{{i}}</span>
+                {{subSkill}}
+              </li>
             </ul>
           </div>
         </div>
@@ -50,13 +53,21 @@ ul {
 }
 .break {
   height: 1px;
-  background-color: rgb(36, 35, 46);
+  background-color: var(--primary);
 }
 .skill-card {
+  background-color: var(--q-sec);
   border-radius: 25px;
   margin: 12px;
 
   padding: 22px 18px 18px 15px;
   @include box-shadow(2);
+  span {
+    color: #a04f64;
+  }
+}
+li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: default;
 }
 </style>

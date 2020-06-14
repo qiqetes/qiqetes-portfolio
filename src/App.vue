@@ -15,6 +15,14 @@
       </div>
     </transition>
 
+    <!-- Theme switch button -->
+    <transition name="fade">
+      <div class="night-mode" v-on:click="switchTheme()" v-if="scrollVisible">
+        <i class="fas fa-moon" v-if="nightMode"></i>
+        <i class="far fa-moon" v-if="!nightMode"></i>
+      </div>
+    </transition>
+
     <!-- particles -->
     <div class="particles" :style="{top: parallaxOffset+'px'}">
       <div id="particles-js"></div>
@@ -42,7 +50,8 @@ export default {
     return {
       parallaxOffset: 0,
       changingWord: "...",
-      scrollVisible: true
+      scrollVisible: true,
+      nightMode: false
     };
   },
   methods: {
@@ -116,8 +125,19 @@ export default {
     },
     scrollHandler() {
       let y = window.scrollY;
-      if (y > 100) this.scrollVisible = false;
+      if (y > 25) this.scrollVisible = false;
+      else this.scrollVisible = true;
       this.parallaxOffset = y * 0.5;
+    },
+    switchTheme() {
+      this.nightMode = !this.nightMode;
+      let el = document.getElementsByTagName("BODY")[0];
+      console.log(el);
+      if (this.nightMode == true) {
+        el.setAttribute("data-theme", "dark");
+      } else {
+        el.setAttribute("data-theme", "light");
+      }
     }
   }
 };
@@ -125,18 +145,23 @@ export default {
 
 
 <style lang="scss">
-@mixin box-shadow($level) {
-  @if $level == 1 {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  } @else if $level == 2 {
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
-  } @else if $level == 3 {
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.3);
-  } @else if $level == 4 {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 40px rgba(0, 0, 0, 0.1);
-  } @else if $level == 5 {
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  }
+@import "./assets/scss/mixins.scss";
+
+body {
+  --q-bg: rgb(252, 252, 252);
+  --q-sec: white;
+  --primary: #2c3e50;
+  --q-tag: rgb(53, 53, 53);
+}
+body[data-theme="dark"] {
+  // TODO: fucking ugly colors
+  --q-bg: #2d2a2e;
+  --q-sec: #2d2a2d;
+  --primary: rgb(252, 252, 252);
+  --q-tag: rgb(219, 219, 219);
+}
+.card {
+  background-color: transparent !important;
 }
 
 html {
@@ -178,8 +203,8 @@ body {
   display: block;
   overflow: hidden;
   overflow-y: auto;
-  color: #2c3e50;
-  background-color: rgb(253, 253, 253);
+  color: var(--primary);
+  background-color: var(--q-bg);
   ul {
     list-style: none;
     padding-left: 0;
@@ -193,7 +218,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #2c3e50;
+  background-color: var(--primary);
   // outline: 1px solid slategrey;
 }
 
@@ -213,12 +238,12 @@ button {
   margin: 12px;
   padding: 15px 25px 15px 25px;
   font-family: "Space Mono";
-  background-color: white;
+  background-color: var(--q-sec);
   border: 0;
   border-radius: 100px;
 
   @include box-shadow(2);
-  color: #2c3e50;
+  color: var(--primary);
   transition: box-shadow 0.5s;
 
   h2 {
@@ -239,7 +264,7 @@ button:active {
 }
 button:disabled {
   box-shadow: none;
-  border: 2px solid #2c3e50;
+  border: 2px solid var(--primary);
   border-radius: 25px;
 }
 i {
@@ -290,5 +315,11 @@ i {
   100% {
     transform: translateY(0%);
   }
+}
+
+.night-mode {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
 }
 </style>

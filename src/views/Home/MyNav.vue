@@ -41,7 +41,7 @@ nav {
   margin: 10px;
 }
 .solid {
-  background-color: white;
+  background-color: var(--q-bg);
   z-index: 10;
   transition: background-color 0.5s;
 }

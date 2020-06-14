@@ -77,6 +77,7 @@ export default {
   @include box-shadow(2);
   transition: opacity 1s;
   margin-bottom: 15px;
+  background-color: var(--q-sec);
 }
 
 .tag {
@@ -84,8 +85,8 @@ export default {
   padding: 2px;
   border-radius: 20px;
   padding: 2px 10px 2px 10px;
-  color: white;
-  background-color: rgb(53, 53, 53);
+  color: var(--q-sec);
+  background-color: var(--q-tag);
 }
 button {
   padding: 4px 12px 4px 12px;

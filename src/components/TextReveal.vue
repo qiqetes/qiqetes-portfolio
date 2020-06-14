@@ -67,7 +67,7 @@ export default {
 }
 .cover-text {
   position: absolute;
-  background-color: #2c3e50;
+  background-color: var(--primary);
   display: inline-block;
   height: 100%;
   width: 100%;
