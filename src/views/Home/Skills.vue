@@ -7,6 +7,7 @@
         v-for="skill in skills"
         :key="skill.name"
         :class="'col-lg-' + 12/numRows + ' col-sm-' + 12/(numRows/2)"
+        style="padding: 0 0.625rem"
       >
         <div class="row skill-card">
           <div class="col">
@@ -58,12 +59,12 @@ ul {
 .skill-card {
   background-color: var(--q-sec);
   border-radius: 25px;
-  margin: 12px;
+  margin: 0 0px 12px 0px;
 
   padding: 22px 18px 18px 15px;
   @include box-shadow(2);
   span {
-    color: #a04f64;
+    color: var(--accent);
   }
 }
 li:hover {

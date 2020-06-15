@@ -20,6 +20,7 @@ export default {
     };
   },
   mounted() {
+    // TODO: add some kind of sort function to make the front-end projects appear first
     this.works = workJson.works;
   },
   components: {

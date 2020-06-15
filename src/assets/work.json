@@ -5,8 +5,8 @@
             "date": "2020",
             "description": "This single-page app, developed with vue.js and taking special care about the design.",
             "tags": [
-                "vue",
                 "front-end",
+                "vue",
                 "ui"
             ],
             "link": "http://github.com/qiqetes/qiqetes-portfolio"
@@ -16,8 +16,8 @@
             "date": "2020",
             "description": "My approach to creating pseudo-random noise images. Originally it was an approach to create procedural terrains for unity. Written in c# with threading optimizations.",
             "tags": [
-                "c#",
-                "algorithms"
+                "algorithms",
+                "c#"
             ],
             "link": "http://github.com/qiqetes/qiqetes-portfolio"
         },
@@ -26,9 +26,9 @@
             "date": "2020",
             "description": "With machine learning it learns from user tweets and publish random tweets with the leanguage learnt.",
             "tags": [
+                "algorithms",
                 "machine learning",
-                "python",
-                "algorithms"
+                "python"
             ],
             "link": "http://github.com/qiqetes/qiqetes-portfolio"
         },
@@ -37,10 +37,10 @@
             "date": "2019",
             "description": "Winner game developed in a jam of 34 hours for the Polytechnic University of Valencia. We used unity as engine and blender 3D to make the assets. A video will be available soon.",
             "tags": [
+                "gamedev",
                 "unity",
                 "c#",
-                "blender",
-                "gamedev"
+                "blender"
             ]
         },
         {
@@ -48,17 +48,18 @@
             "date": "2019-2020",
             "description": "My most ambitious project. It is a mobile multiplayer game developed for IOs and android. It will be launched this summer.",
             "tags": [
+                "front-end",
                 "flutter",
                 "dart",
-                "front-end",
                 "ui"
             ]
         },
         {
             "name": "My electron diary",
             "date": "2018",
-            "description": "A non-finished project, where I tried to make a personal diary application using Vue",
+            "description": "Unfinished project, where I tried to make a personal diary application using Vue",
             "tags": [
+                "front-end",
                 "vue",
                 "electron",
                 "vuex",
@@ -71,8 +72,8 @@
             "description": "Single-page application developing the typical to-do list.",
             "date": "2018",
             "tags": [
-                "react",
-                "front-end"
+                "front-end",
+                "react"
             ],
             "link": "http://github.com/qiqetes/qiqetes-portfolio"
         }

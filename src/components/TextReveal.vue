@@ -67,11 +67,12 @@ export default {
 }
 .cover-text {
   position: absolute;
-  background-color: var(--primary);
+  background-color: var(--accent);
   display: inline-block;
   height: 100%;
   width: 100%;
   transform: translateX(102%);
+  z-index: 10;
 }
 
 @keyframes text-reveal {

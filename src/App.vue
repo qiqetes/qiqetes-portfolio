@@ -163,17 +163,18 @@ body {
   --q-scroll-bg: rgb(230, 230, 230);
   --q-sec: white;
   --primary: #2c3e50;
-  --accent: #2c3e50;
+  --accent: #1f4557;
   --q-tag: rgb(53, 53, 53);
 }
 body[data-theme="dark"] {
   // TODO: fucking ugly colors
-  --q-bg: #2d2a2e;
+  --q-bg: #1c1c1e;
   --q-sec: #2d2a2d;
   --q-scroll-bg: #221f22;
   --accent: #a04f64;
+  --accent: #2bf0ab;
   --primary: rgb(252, 252, 252);
-  --q-tag: rgb(219, 219, 219);
+  --q-tag: #2bf0ab;
 }
 .card {
   background-color: transparent !important;
