@@ -45,10 +45,18 @@ export default {
     this.logoY = document.getElementById("logo").getBoundingClientRect().top;
   },
   created() {
-    const userPrefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    if (userPrefersDark) this.switchTheme();
+    let cookie = this.getCookie("theme");
+    if (cookie) {
+      console.log(cookie != null);
+      if (cookie == "dark") {
+        this.switchTheme();
+      }
+    } else {
+      const userPrefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (userPrefersDark) this.switchTheme();
+    }
   },
   data() {
     return {
@@ -145,10 +153,22 @@ export default {
       this.nightMode = !this.nightMode;
       let el = document.getElementsByTagName("BODY")[0];
       if (this.nightMode == true) {
+        console.log("emo mode");
         el.setAttribute("data-theme", "dark");
+        this.setCookie("theme", "dark");
       } else {
         el.setAttribute("data-theme", "light");
+        this.setCookie("theme", "light");
       }
+    },
+    setCookie(key, value) {
+      var expires = new Date();
+      expires.setTime(expires.getTime() + 1 * 24 * 60 * 60 * 1000);
+      document.cookie = key + "=" + value + ";expires=" + expires.toUTCString();
+    },
+    getCookie(key) {
+      var keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
+      return keyValue ? keyValue[2] : null;
     }
   }
 };
