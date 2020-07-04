@@ -1,24 +1,30 @@
 <template>
-  <div class="container">
-    <h1 class="text-center">Skills:</h1>
+  <div class="container" style="margin-top: 200px">
+    <div class="row justify-content-end">
+      <div class="col-lg-10 col-md-12">
+        <h1 class="text-center">
+          <span>03.</span> Skills:
+        </h1>
 
-    <div class="row justify-content-center" style="margin-top: 40px">
-      <div
-        v-for="skill in skills"
-        :key="skill.name"
-        :class="'col-lg-' + 12/numRows + ' col-sm-' + 12/(numRows/2)"
-        style="padding: 0 0.625rem"
-      >
-        <div class="row skill-card">
-          <div class="col">
-            <h3>{{skill.name}}</h3>
-            <div class="break"></div>
-            <ul>
-              <li v-for="(subSkill,i) in skill.subskills" :key="subSkill">
-                <span>{{i}}</span>
-                {{subSkill}}
-              </li>
-            </ul>
+        <div class="row justify-content-center" style="margin-top: 40px">
+          <div
+            v-for="skill in skills"
+            :key="skill.name"
+            :class="'col-lg-' + 12/numRows + ' col-sm-' + 12/(numRows/2)"
+            style="padding: 0 0.625rem"
+          >
+            <div class="row skill-card">
+              <div class="col">
+                <h3>{{skill.name}}</h3>
+                <div class="break"></div>
+                <ul>
+                  <li v-for="(subSkill,i) in skill.subskills" :key="subSkill">
+                    <span>{{i}}</span>
+                    {{subSkill}}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -45,9 +51,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/scss/mixins.scss";
-h1 {
-  margin-top: 100px !important;
-}
 ul {
   padding-left: 10px;
   padding-top: 10px;

@@ -31,18 +31,11 @@ export default {
     };
   },
   mounted() {
-    let text = this.$slots.default[0].children[0].text;
-    let len = text.length;
-    this.tag = this.$slots.default[0].tag;
-    for (let i = 0; i < len; i++) {
-      this.textT += " ";
-    }
     setTimeout(() => {
       this.anim = "text-reveal";
       setTimeout(() => {
         this.opacity = 1;
         this.reveal = true;
-        this.textT = text;
       }, this.duration * 0.3);
     }, this.delay);
   }

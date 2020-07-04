@@ -17,9 +17,15 @@
 
     <!-- Theme switch button-->
     <transition name="fade">
-      <div class="night-mode" v-on:click="switchTheme()" v-if="scrollVisible">
-        <i class="fas fa-moon" v-if="nightMode"></i>
-        <i class="far fa-moon" v-if="!nightMode"></i>
+      <div class="night-mode column container" v-on:click="switchTheme()" v-if="scrollVisible">
+        <div class="row justify-content-center night-text">{{themeName}}</div>
+        <br />
+        <br />
+        <br />
+        <div class="row justify-content-center">
+          <i class="fas fa-moon" v-if="nightMode"></i>
+          <i class="far fa-moon" v-if="!nightMode"></i>
+        </div>
       </div>
     </transition>
 
@@ -33,10 +39,12 @@
 <script>
 import "./assets/particles.min.js";
 import MyNav from "./components/MyNav";
+import TextReveal from "./components/TextReveal";
 
 export default {
   components: {
-    MyNav
+    MyNav,
+    TextReveal
   },
 
   mounted() {
@@ -65,7 +73,8 @@ export default {
       scrollVisible: true,
       nightMode: false,
       turnSolidNav: false,
-      logoY: 0
+      logoY: 0,
+      themeName: "CHANGE THEME"
     };
   },
   methods: {
@@ -183,7 +192,7 @@ body {
   --q-scroll-bg: rgb(230, 230, 230);
   --q-sec: white;
   --primary: #2c3e50;
-  --accent: #1f4557;
+  --accent: #a04f64;
   --q-tag: rgb(53, 53, 53);
 }
 body[data-theme="dark"] {
@@ -353,8 +362,32 @@ i {
 }
 
 .night-mode {
-  position: absolute;
+  position: fixed;
+
+  padding: 0 !important;
+  width: 20px;
   left: 40px;
   bottom: 40px;
+  .night-text {
+    transform: rotate(90deg);
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  div {
+    white-space: nowrap;
+    i {
+      margin: 0;
+    }
+  }
+}
+
+h1 {
+  font-family: "Questrial" !important;
+  span {
+    color: var(--accent);
+    font-family: "Space Mono", monospace;
+    font-size: 0.8em;
+  }
 }
 </style>

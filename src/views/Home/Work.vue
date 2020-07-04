@@ -1,11 +1,17 @@
 <template>
-  <div class="container">
-    <h1 class="text-center">Some of my projects:</h1>
-    <ul class="card-columns">
-      <li v-for="work in works" :key="work.name" class="card">
-        <WorkCard :work="work" />
-      </li>
-    </ul>
+  <div class="container" id="work" style="margin-top: 200px">
+    <div class="row justify-content-start">
+      <div class="col-lg-10 col-md-12">
+        <h1>
+          <span>02.</span> Some of my projects:
+        </h1>
+        <ul class="card-columns">
+          <li v-for="work in works" :key="work.name" class="card">
+            <WorkCard :work="work" />
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -46,11 +52,6 @@ ul {
 @media (min-width: 768px) {
   .card-columns {
     column-count: 2;
-  }
-}
-@media (min-width: 2400px) {
-  .card-columns {
-    column-count: 3;
   }
 }
 </style>

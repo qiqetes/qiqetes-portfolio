@@ -3,14 +3,14 @@
     <h4>{{work.name}}</h4>
     <p>{{work.description}}</p>
     <div class="row" style="margin: auto">
-      <div class="col-6 col-lg-8" style="padding: 0">
+      <div class="col-6 col-lg-7" style="padding: 0">
         <div class="row justify-content-start">
           <ul style="margin: 12px">
             <li v-for="tag in work.tags" :key="work.name+tag" class="tag">{{tag}}</li>
           </ul>
         </div>
       </div>
-      <div class="col-6 col-lg-4 align-self-end" style="padding: 0">
+      <div class="col-6 col-lg-5 align-self-end" style="padding: 0">
         <!-- TODO: add a view live link -->
         <div class="row justify-content-end">
           <button v-if="work.link" v-on:click="goToLink(work.link)">
@@ -87,6 +87,7 @@ export default {
   padding: 2px 10px 2px 10px;
   color: var(--q-sec);
   background-color: var(--q-tag);
+  white-space: nowrap;
 }
 button {
   padding: 4px 12px 4px 12px;
