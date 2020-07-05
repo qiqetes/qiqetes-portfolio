@@ -4,7 +4,7 @@
     <router-view></router-view>
 
     <!-- scroll item -->
-    <!-- <transition name="fade">
+    <transition name="fade">
       <div class="scroll-down row justify-content-center" v-if="scrollVisible">
         <div>
           <div class="row justify-content-center">scroll</div>
@@ -13,16 +13,16 @@
           </div>
         </div>
       </div>
-    </transition>-->
+    </transition>
 
     <!-- Theme switch button-->
     <transition name="fade">
-      <div class="night-mode column container" v-on:click="switchTheme()" v-if="scrollVisible">
+      <div class="night-mode column container" v-if="scrollVisible">
         <div class="row justify-content-center night-text">{{themeName}}</div>
         <br />
         <br />
         <br />
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" v-on:click="switchTheme()">
           <i class="fas fa-moon" v-if="nightMode"></i>
           <i class="far fa-moon" v-if="!nightMode"></i>
         </div>
@@ -55,7 +55,6 @@ export default {
   created() {
     let cookie = this.getCookie("theme");
     if (cookie) {
-      console.log(cookie != null);
       if (cookie == "dark") {
         this.switchTheme();
       }
@@ -162,12 +161,13 @@ export default {
       this.nightMode = !this.nightMode;
       let el = document.getElementsByTagName("BODY")[0];
       if (this.nightMode == true) {
-        console.log("emo mode");
         el.setAttribute("data-theme", "dark");
         this.setCookie("theme", "dark");
+        this.themeName = "LIGHT MODE";
       } else {
         el.setAttribute("data-theme", "light");
         this.setCookie("theme", "light");
+        this.themeName = "DARK MODE";
       }
     },
     setCookie(key, value) {
@@ -193,6 +193,7 @@ body {
   --q-sec: white;
   --primary: #2c3e50;
   --accent: #a04f64;
+  --accent2: #bd687e;
   --q-tag: rgb(53, 53, 53);
 }
 body[data-theme="dark"] {
@@ -200,8 +201,8 @@ body[data-theme="dark"] {
   --q-bg: #1c1c1e;
   --q-sec: #2d2a2d;
   --q-scroll-bg: #221f22;
-  --accent: #a04f64;
   --accent: #2bf0ab;
+  --accent2: #d0f5e8;
   --primary: rgb(252, 252, 252);
   --q-tag: #2bf0ab;
 }
@@ -350,6 +351,20 @@ i {
     transform: translateY(0);
   }
 }
+@keyframes pulse-opacity {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 @keyframes btn-reveal {
   0% {
@@ -369,6 +384,7 @@ i {
   left: 40px;
   bottom: 40px;
   .night-text {
+    animation: pulse-opacity 5s ease-in infinite;
     transform: rotate(90deg);
     @media (max-width: 768px) {
       display: none;
@@ -377,6 +393,7 @@ i {
   div {
     white-space: nowrap;
     i {
+      cursor: pointer;
       margin: 0;
     }
   }
@@ -389,5 +406,15 @@ h1 {
     font-family: "Space Mono", monospace;
     font-size: 0.8em;
   }
+}
+
+a {
+  color: inherit;
+}
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  color: inherit;
 }
 </style>

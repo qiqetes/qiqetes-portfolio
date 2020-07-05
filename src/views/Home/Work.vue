@@ -7,7 +7,7 @@
         </h1>
         <ul class="card-columns">
           <li v-for="work in works" :key="work.name" class="card">
-            <WorkCard :work="work" />
+            <WorkCard :work="work" :onClickTag="onClickChangeTag" :highlightedTag="highlightedTag" />
           </li>
         </ul>
       </div>
@@ -22,7 +22,8 @@ import WorkCard from "./WorkCard";
 export default {
   data() {
     return {
-      works: []
+      works: [],
+      highlightedTag: ""
     };
   },
   mounted() {
@@ -31,6 +32,12 @@ export default {
   },
   components: {
     WorkCard
+  },
+  methods: {
+    onClickChangeTag(newTag) {
+      if (newTag != this.highlightedTag) this.highlightedTag = newTag;
+      else this.highlightedTag = "";
+    }
   }
 };
 </script>

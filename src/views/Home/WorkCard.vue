@@ -6,13 +6,22 @@
       <div class="col-6 col-lg-7" style="padding: 0">
         <div class="row justify-content-start">
           <ul style="margin: 12px">
-            <li v-for="tag in work.tags" :key="work.name+tag" class="tag">{{tag}}</li>
+            <li
+              v-for="tag in work.tags"
+              :key="work.name+tag"
+              :class="tag!=highlightedTag?'tag':'tag highlight'"
+              v-on:click="onClickTag(tag)"
+            >{{tag}}</li>
           </ul>
         </div>
       </div>
       <div class="col-6 col-lg-5 align-self-end" style="padding: 0">
         <!-- TODO: add a view live link -->
         <div class="row justify-content-end">
+          <button v-if="work.live" v-on:click="goToLink(work.live)">
+            live
+            <i class="fas fa-play"></i>
+          </button>
           <button v-if="work.link" v-on:click="goToLink(work.link)">
             source
             <i class="fas fa-code"></i>
@@ -45,10 +54,13 @@ export default {
     this.changeTransparency;
   },
   props: {
-    work: Object
+    work: Object,
+    onClickTag: Function,
+    highlightedTag: String
   },
   methods: {
     goToLink(link) {
+      console.log("Redirecting to: " + link);
       window.open(link);
     },
     changeTransparency() {
@@ -88,9 +100,26 @@ export default {
   color: var(--q-sec);
   background-color: var(--q-tag);
   white-space: nowrap;
+  cursor: pointer;
+}
+.highlight {
+  animation: color-pulse 2s ease-in infinite;
+}
+
+@keyframes color-pulse {
+  0% {
+    background-color: var(--accent2);
+  }
+  50% {
+    background-color: var(--q-tag);
+  }
+  100% {
+    background-color: var(--accent2);
+  }
 }
 button {
   padding: 4px 12px 4px 12px;
+  margin: 5px;
   i {
     margin-left: 0;
   }

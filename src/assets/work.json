@@ -9,7 +9,8 @@
                 "vue",
                 "ui"
             ],
-            "link": "http://github.com/qiqetes/qiqetes-portfolio"
+            "link": "http://github.com/qiqetes/qiqetes-portfolio",
+            "live": "https://qiqetes.github.io/qiqetes-portfolio"
         },
         {
             "name": "My perillin Noise",
@@ -119,5 +120,6 @@
                 "Git"
             ]
         }
-    ]
+    ],
+    "resumeLink": "https://drive.google.com/file/d/1i_amZt2pqQqCFSu3aiNwLJUQ7H3IgUiU/view"
 }

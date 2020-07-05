@@ -8,14 +8,26 @@
         </li>
       </transition>
       <li class="nav-item align-self-center">Blog</li>
-      <li class="nav-item align-self-center">Resume</li>
+      <li class="nav-item align-self-center">
+        <a :href="resumeLink">Resume</a>
+      </li>
       <li class="nav-item align-self-center">About me</li>
     </ul>
   </nav>
 </template>
 
 <script>
+import dataJson from "../assets/work.json";
+
 export default {
+  data() {
+    return {
+      resumeLink: "https://google.com"
+    };
+  },
+  mounted() {
+    this.resumeLink = dataJson.resumeLink;
+  },
   props: {
     solid: Boolean
   },
