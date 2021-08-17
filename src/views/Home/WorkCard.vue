@@ -1,49 +1,68 @@
 <template>
-  <div class="work-card" :style="{opacity: transparency}">
-    <h4>{{work.name}}</h4>
-    <p>{{work.description}}</p>
-    <div class="row" style="margin: auto">
-      <div class="col-6 col-lg-7" style="padding: 0">
-        <div class="row justify-content-start">
-          <ul style="margin: 12px">
-            <li
-              v-for="tag in work.tags"
-              :key="work.name+tag"
-              :class="tag!=highlightedTag?'tag':'tag highlight'"
-              v-on:click="onClickTag(tag)"
-            >{{tag}}</li>
-          </ul>
+  <div>
+    <div class="work-card" :style="{ opacity: transparency }">
+      <h4>{{ work.name }}</h4>
+      <p style="white-space: pre-line">{{ work.description }}</p>
+      <div class="row" style="margin: auto">
+        <div class="col-6 col-lg-7" style="padding: 0">
+          <div class="row justify-content-start">
+            <ul style="margin: 12px">
+              <li
+                v-for="tag in work.tags"
+                :key="work.name + tag"
+                :class="tag != highlightedTag ? 'tag' : 'tag highlight'"
+                v-on:click="onClickTag(tag)"
+              >
+                {{ tag }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-6 col-lg-5 align-self-end" style="padding: 0">
+          <!-- TODO: add a view live link -->
+          <div class="row justify-content-end">
+            <button v-if="work.live" v-on:click="goToLink(work.live)">
+              live
+              <i class="fas fa-play"></i>
+            </button>
+            <button v-if="work.link" v-on:click="goToLink(work.link)">
+              source
+              <i class="fas fa-code"></i>
+            </button>
+            <button v-if="!work.link" disabled>
+              no source
+              <i class="fas fa-code"></i>
+            </button>
+            <button
+              v-if="work.demo"
+              style="cursor: none"
+              @mouseenter="onMouseMove($event)"
+              @mouseleave="hoveredDemo = false"
+            >
+              demo
+            </button>
+          </div>
         </div>
       </div>
-      <div class="col-6 col-lg-5 align-self-end" style="padding: 0">
-        <!-- TODO: add a view live link -->
-        <div class="row justify-content-end">
-          <button v-if="work.live" v-on:click="goToLink(work.live)">
-            live
-            <i class="fas fa-play"></i>
-          </button>
-          <button v-if="work.link" v-on:click="goToLink(work.link)">
-            source
-            <i class="fas fa-code"></i>
-          </button>
-          <button v-if="!work.link" disabled>
-            no source
-            <i class="fas fa-code"></i>
-          </button>
-        </div>
-      </div>
+    </div>
+    <div class="demo" v-if="hoveredDemo" :style="{ left: left + 'px', top: top + 'px' }">
+      <img :src="demoImg" alt=""/>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data: function() {
+  data: function () {
     return {
       transparency: 0,
       yIndex: 0,
       actual: 0,
-      cT: this.changeTransparency
+      cT: this.changeTransparency,
+      hoveredDemo: false,
+      demoImg: "",
+      left: 0,
+      top: 0,
     };
   },
   created() {
@@ -52,11 +71,14 @@ export default {
   mounted() {
     this.yIndex = this.$el.getBoundingClientRect().top - window.innerHeight;
     this.changeTransparency;
+    if (this.work.demo) {
+      this.demoImg = require("@/assets/" + this.work.demo);
+    }
   },
   props: {
     work: Object,
     onClickTag: Function,
-    highlightedTag: String
+    highlightedTag: String,
   },
   methods: {
     goToLink(link) {
@@ -68,13 +90,19 @@ export default {
       if (window.scrollY - 50 > this.yIndex && this.transparency != 1) {
         this.transparency = 1;
       } // FIXME: with enter it will behave better
-    }
-  }
+    },
+    onMouseMove(e) {
+      this.hoveredDemo = true
+      this.left = e.pageX;
+      this.top = e.screenY;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../../assets/scss/mixins.scss";
+
 .work-card {
   font-family: "Space Mono";
   li {
@@ -123,5 +151,13 @@ button {
   i {
     margin-left: 0;
   }
+}
+h4 {
+  font-weight: 900;
+}
+.demo {
+  position: fixed;
+  z-index: 99;
+  max-width: 100vw;
 }
 </style>

@@ -9,7 +9,7 @@
       <div class="col-10">
         <div class="small-about row justify-content-center">
           <TextReveal :duration="700" :delay="1000">
-            <p style="font-family: 'Questrial', sans-serif">
+            <p style="font-family: 'Questrial', sans-serif;" class="big-p">
               <span style="font-weight: 700">{{greetingMsg}}</span>
               {{about}}
             </p>
@@ -121,9 +121,13 @@ export default {
 .my-cont {
   height: 100%;
   p {
-    font-size: 1.3em;
     color: var(--primary) !important;
   }
+  @media (min-width: 576px) {
+  p {
+    font-size: 2em;
+  }
+}
 }
 .small-about {
   margin-top: 28px;
@@ -135,7 +139,11 @@ export default {
   .logo-cont {
     height: 20%;
   }
+  p {
+    font-size: 1.3em;
+  }
 }
+
 h2 {
   font-family: "Space Mono";
   font-weight: 900;

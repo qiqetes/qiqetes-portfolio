@@ -1,6 +1,14 @@
 {
     "works": [
         {
+            "name": "Micalet App",
+            "date": 2021,
+            "description": "Project done for a studio that wanted to bring the experience of visiting a museum to a mobile application. \n\nIt consists of the main app developed with Flutter to offer a cross-platform experience. And a web so that the studio members can easily add data points to the app. In the back we have a noSQL database powered by firebase.",
+            "link": "https://twitter.com/InfoMicalet?s=20",
+            "demo": "demo_micalet.gif",
+            "tags": ["flutter", "vue", "firebase","front-end", "back-end", "dart"]
+        },
+        {
             "name": "This portfolio",
             "date": "2020",
             "description": "This single-page app, developed with vue.js and taking special care about the design.",
@@ -31,7 +39,7 @@
                 "machine learning",
                 "python"
             ],
-            "link": "http://github.com/qiqetes/qiqetes-portfolio"
+            "link": "https://github.com/qiqetes/Tweet-generator_ML"
         },
         {
             "name": "Cubolores (GameJam UPV)",
@@ -42,7 +50,8 @@
                 "unity",
                 "c#",
                 "blender"
-            ]
+            ],
+            "link": "https://ragnarokshadows.itch.io/cubelores?secret=PsaU8wtR0liDJk7YfSdYpJ6mgNA"
         },
         {
             "name": "Cards Against Humanity",
@@ -53,20 +62,20 @@
                 "flutter",
                 "dart",
                 "ui"
-            ]
+            ],
+            "demo":"demo_cah.gif"
         },
         {
-            "name": "My electron diary",
+            "name": "My web diary",
             "date": "2018",
             "description": "Unfinished project, where I tried to make a personal diary application using Vue",
             "tags": [
                 "front-end",
-                "vue",
-                "electron",
-                "vuex",
+                "react",
+                "node.js",
                 "ui"
             ],
-            "link": "github.com"
+            "link": "https://github.com/qiqetes/My-diary-webapp"
         },
         {
             "name": "Todo-list app",
@@ -98,6 +107,7 @@
                 "c# .Net",
                 "python",
                 "java",
+                "firebase",
                 "node.js"
             ]
         },
@@ -121,5 +131,5 @@
             ]
         }
     ],
-    "resumeLink": "https://drive.google.com/file/d/1i_amZt2pqQqCFSu3aiNwLJUQ7H3IgUiU/view"
+    "resumeLink": "https://drive.google.com/file/d/1z4Xo-qju8CZ9PtrNgvqZaLFUDmyOedcN/view"
 }
